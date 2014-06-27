@@ -10,6 +10,7 @@ Group: Development/Languages
 License: MIT
 URL: https://github.com/pradels/vagrant-libvirt
 Source0: https://rubygems.org/gems/%{gem_name}-%{version}.gem
+Source1: https://gist.githubusercontent.com/purpleidea/8071962/raw/ee27c56e66aafdcb9fd9760f123e7eda51a6a51e/.bashrc_vagrant.sh
 Requires: ruby(release)
 Requires: ruby(rubygems) 
 Requires: rubygem(fog) => 1.15
@@ -58,10 +59,17 @@ gem build %{gem_name}.gemspec
 mkdir -p %{buildroot}%{gem_dir}
 cp -a .%{gem_dir}/* \
         %{buildroot}%{gem_dir}/
+%mkdir -p %{buildroot}%{_sysconfdir}/profile.d
+%cp %{SOURCE1} %{buildroot}%{_sysconfdir}/profile.d/vagrant-libvirt.sh
+%chmod 755 %{buildroot}%{_sysconfdir}/profile.d/vagrant-libvirt.sh
+
 
 %files
 %dir %{gem_instdir}
 %{gem_libdir}
+
+%{_sysconfdir}/profile.d
+%{_sysconfdir}/profile.d/vagrant-libvirt.sh'
 
 %doc %dir %{gem_instdir}/example_box
 %doc %{gem_instdir}/example_box
