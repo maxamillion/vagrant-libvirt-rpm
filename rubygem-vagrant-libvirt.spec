@@ -18,6 +18,8 @@ Requires: rubygem(fog) => 1.15
 Requires: rubygem(fog) < 2
 Requires: rubygem(ruby-libvirt) => 0.4.0
 Requires: rubygem(ruby-libvirt) < 0.5
+Requires: libvirt
+Requires: libvirt-daemon-kvm
 #Requires: rubygem(nokogiri) => 1.5.9
 #Requires: rubygem(nokogiri) < 1.6
 Requires: rubygem(nokogiri)
@@ -26,6 +28,9 @@ Requires: polkit-pkla-compat
 BuildRequires: ruby(release)
 BuildRequires: rubygems-devel 
 BuildRequires: ruby 
+BuildRequires: libvirt-devel
+BuildRequires: libxslt-devel
+BuildRequires: libxml2-devel
 BuildArch: noarch
 Provides: rubygem(%{gem_name}) = %{version}
 
