@@ -72,14 +72,14 @@ install %{SOURCE1} -m 0755  %{buildroot}%{_sysconfdir}/profile.d/vagrant-libvirt
 
 # pkla file for users in vagrant group
 mkdir -p %{buildroot}%{_sysconfdir}/polkit-1/localauthority/50-local.d/
-install -m 0644 -o root -g root %{SOURCE2} %{buildroot}%{_sysconfdir}/polkit-1/localauthority/50-local.d/vagrant-libvirt.pkla
+install -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/polkit-1/localauthority/50-local.d/vagrant-libvirt.pkla
 
 %files
 %dir %{gem_instdir}
 %{gem_libdir}
 
 %dir %{_sysconfdir}/profile.d
-%{_sysconfdir}/profile.d/vagrant-libvirt.sh'
+%attr(0755, root, root) %{_sysconfdir}/profile.d/vagrant-libvirt.sh
 
 %dir %{_sysconfdir}/polkit-1/
 %dir %{_sysconfdir}/polkit-1/localauthority/
