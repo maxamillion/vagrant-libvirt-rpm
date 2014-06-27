@@ -13,6 +13,7 @@ Source0: https://rubygems.org/gems/%{gem_name}-%{version}.gem
 Source1: https://gist.githubusercontent.com/purpleidea/8071962/raw/ee27c56e66aafdcb9fd9760f123e7eda51a6a51e/.bashrc_vagrant.sh
 Source2: vagrant-libvirt.pkla
 Patch0: vagrant-libvirt-nokogiri-version.patch
+Requires(pre): shadow-utils
 Requires: ruby(release)
 Requires: ruby(rubygems) 
 Requires: rubygem(fog) => 1.15
@@ -73,6 +74,9 @@ install %{SOURCE1} -m 0755  %{buildroot}%{_sysconfdir}/profile.d/vagrant-libvirt
 # pkla file for users in vagrant group
 mkdir -p %{buildroot}%{_sysconfdir}/polkit-1/localauthority/50-local.d/
 install -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/polkit-1/localauthority/50-local.d/vagrant-libvirt.pkla
+
+%pre
+getent group vagrant >/dev/null || groupadd -r vagrant
 
 %files
 %dir %{gem_instdir}
