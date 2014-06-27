@@ -12,6 +12,7 @@ URL: https://github.com/pradels/vagrant-libvirt
 Source0: https://rubygems.org/gems/%{gem_name}-%{version}.gem
 Source1: https://gist.githubusercontent.com/purpleidea/8071962/raw/ee27c56e66aafdcb9fd9760f123e7eda51a6a51e/.bashrc_vagrant.sh
 Source2: vagrant-libvirt.pkla
+Patch0: vagrant-libvirt-nokogiri-version.patch
 Requires: ruby(release)
 Requires: ruby(rubygems) 
 Requires: rubygem(fog) => 1.15
@@ -48,6 +49,8 @@ gem unpack %{SOURCE0}
 %setup -q -D -T -n  %{gem_name}-%{version}
 
 gem spec %{SOURCE0} -l --ruby > %{gem_name}.gemspec
+
+%patch0 -p0
 
 %build
 # Create the gem as gem install only works on a gem file

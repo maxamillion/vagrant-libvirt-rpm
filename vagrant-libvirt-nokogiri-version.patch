@@ -1,0 +1,24 @@
+--- vagrant-libvirt.gemspec.orig	2014-06-27 13:54:55.195593895 -0500
++++ vagrant-libvirt.gemspec	2014-06-27 13:55:30.564269630 -0500
+@@ -23,18 +23,18 @@
+     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+       s.add_runtime_dependency(%q<fog>, ["~> 1.15"])
+       s.add_runtime_dependency(%q<ruby-libvirt>, ["~> 0.4.0"])
+-      s.add_runtime_dependency(%q<nokogiri>, ["~> 1.5.9"])
++      s.add_runtime_dependency(%q<nokogiri>, [">= 0"])
+       s.add_development_dependency(%q<rake>, [">= 0"])
+     else
+       s.add_dependency(%q<fog>, ["~> 1.15"])
+       s.add_dependency(%q<ruby-libvirt>, ["~> 0.4.0"])
+-      s.add_dependency(%q<nokogiri>, ["~> 1.5.9"])
++      s.add_dependency(%q<nokogiri>, [">= 0"])
+       s.add_dependency(%q<rake>, [">= 0"])
+     end
+   else
+     s.add_dependency(%q<fog>, ["~> 1.15"])
+     s.add_dependency(%q<ruby-libvirt>, ["~> 0.4.0"])
+-    s.add_dependency(%q<nokogiri>, ["~> 1.5.9"])
++    s.add_dependency(%q<nokogiri>, [">= 0"])
+     s.add_dependency(%q<rake>, [">= 0"])
+   end
+ end
