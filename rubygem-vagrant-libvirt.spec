@@ -81,9 +81,6 @@ install -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/polkit-1/localauthority/50
 %dir %{_sysconfdir}/profile.d
 %attr(0755, root, root) %{_sysconfdir}/profile.d/vagrant-libvirt.sh
 
-%dir %{_sysconfdir}/polkit-1/
-%dir %{_sysconfdir}/polkit-1/localauthority/
-%dir %{_sysconfdir}/polkit-1/localauthority/50-local.d/
 %{_sysconfdir}/polkit-1/localauthority/50-local.d/vagrant-libvirt.pkla
 
 %doc %dir %{gem_instdir}/example_box
