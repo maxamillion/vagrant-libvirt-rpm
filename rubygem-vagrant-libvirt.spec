@@ -19,6 +19,8 @@ Requires: rubygem(fog) => 1.15
 Requires: rubygem(fog) < 2
 Requires: rubygem(ruby-libvirt) => 0.4.0
 Requires: rubygem(ruby-libvirt) < 0.5
+Requires: libvirt
+Requires: libvirt-daemon-kvm
 #Requires: rubygem(nokogiri) => 1.5.9
 #Requires: rubygem(nokogiri) < 1.6
 Requires: rubygem(nokogiri)
