@@ -64,9 +64,9 @@ gem build %{gem_name}.gemspec
 mkdir -p %{buildroot}%{gem_dir}
 cp -a .%{gem_dir}/* \
         %{buildroot}%{gem_dir}/
+
 %mkdir -p %{buildroot}%{_sysconfdir}/profile.d
-%cp %{SOURCE1} %{buildroot}%{_sysconfdir}/profile.d/vagrant-libvirt.sh
-%chmod 755 %{buildroot}%{_sysconfdir}/profile.d/vagrant-libvirt.sh
+install %{SOURCE1} -m 0755  %{buildroot}%{_sysconfdir}/profile.d/vagrant-libvirt.sh
 
 # pkla file for users in vagrant group
 %mkdir -p %{buildroot}%{_sysconfdir}/polkit-1/localauthority/50-local.d/
