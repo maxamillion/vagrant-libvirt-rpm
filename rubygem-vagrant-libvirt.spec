@@ -11,6 +11,7 @@ License: MIT
 URL: https://github.com/pradels/vagrant-libvirt
 Source0: https://rubygems.org/gems/%{gem_name}-%{version}.gem
 Source1: https://gist.githubusercontent.com/purpleidea/8071962/raw/ee27c56e66aafdcb9fd9760f123e7eda51a6a51e/.bashrc_vagrant.sh
+Source2: vagrant-libvirt.pkla
 Requires: ruby(release)
 Requires: ruby(rubygems) 
 Requires: rubygem(fog) => 1.15
@@ -21,6 +22,7 @@ Requires: rubygem(ruby-libvirt) < 0.5
 #Requires: rubygem(nokogiri) < 1.6
 Requires: rubygem(nokogiri)
 Requires: rubygem(multi_json)
+Requires: polkit-pkla-compat
 BuildRequires: ruby(release)
 BuildRequires: rubygems-devel 
 BuildRequires: ruby 
@@ -63,6 +65,9 @@ cp -a .%{gem_dir}/* \
 %cp %{SOURCE1} %{buildroot}%{_sysconfdir}/profile.d/vagrant-libvirt.sh
 %chmod 755 %{buildroot}%{_sysconfdir}/profile.d/vagrant-libvirt.sh
 
+# pkla file for users in vagrant group
+%mkdir -p %{buildroot}%{_sysconfdir}/polkit-1/localauthority/50-local.d/
+install -m 0644 -o root -g root %{SOURCE2} %{buildroot}%{_sysconfdir}/polkit-1/localauthority/50-local.d/vagrant-libvirt.pkla
 
 %files
 %dir %{gem_instdir}
@@ -70,6 +75,11 @@ cp -a .%{gem_dir}/* \
 
 %dir %{_sysconfdir}/profile.d
 %{_sysconfdir}/profile.d/vagrant-libvirt.sh'
+
+%dir %{_sysconfdir}/polkit-1/
+%dir %{_sysconfdir}/polkit-1/localauthority/
+%dir %{_sysconfdir}/polkit-1/localauthority/50-local.d/
+%{_sysconfdir}/polkit-1/localauthority/50-local.d/vagrant-libvirt.pkla
 
 %doc %dir %{gem_instdir}/example_box
 %doc %{gem_instdir}/example_box
