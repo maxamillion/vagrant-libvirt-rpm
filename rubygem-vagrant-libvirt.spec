@@ -68,7 +68,7 @@ cp -a .%{gem_dir}/* \
 %dir %{gem_instdir}
 %{gem_libdir}
 
-%{_sysconfdir}/profile.d
+%dir %{_sysconfdir}/profile.d
 %{_sysconfdir}/profile.d/vagrant-libvirt.sh'
 
 %doc %dir %{gem_instdir}/example_box
